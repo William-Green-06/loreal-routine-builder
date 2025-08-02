@@ -186,6 +186,14 @@ body {
   display: flex;
   gap: 15px;
   min-height: 160px;
+  transition: background 0.2s;
+  cursor: pointer;
+  position: relative; /* Needed for bubble positioning */
+}
+
+.product-card.selected {
+  background: #e3a535;
+  border: 1px solid #000;
 }
 
 .product-card img {
@@ -211,6 +219,45 @@ body {
 .product-card p {
   font-size: 14px;
   color: #666;
+}
+
+/* Product description bubble */
+.desc-bubble {
+  position: absolute;
+  left: 0;
+  bottom: 100%; /* Position above the card */
+  width: 100%; /* Match product card width */
+  background: #222;
+  color: #fff;
+  padding: 18px 16px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  font-size: 15px;
+  line-height: 1.5;
+  opacity: 0;
+  pointer-events: none; /* Prevent interaction by default */
+  transition: opacity 0.3s;
+  z-index: 20;
+  white-space: normal;
+  margin-bottom: 18px;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  box-sizing: border-box;
+  max-width: none; /* Remove previous max-width */
+}
+
+/* Show bubble when .visible */
+.product-card .desc-bubble.visible {
+  opacity: 1;
+  pointer-events: auto; /* Allow interaction with bubble */
+}
+
+/* Responsive font shrink if bubble would overflow viewport */
+@media (max-width: 600px) {
+  .desc-bubble {
+    font-size: 13px;
+    padding: 12px 8px;
+  }
 }
 
 /* selected products */
@@ -252,4 +299,18 @@ body {
 
 .generate-btn i {
   margin-right: 8px;
+}
+
+.remove-x {
+  color: #ff003b;
+  font-weight: bold;
+  margin-right: 8px;
+  cursor: pointer;
+  font-size: 1.2em;
+  vertical-align: middle;
+  transition: color 0.2s;
+}
+
+.remove-x:hover {
+  color: #b8002a;
 }
