@@ -72,6 +72,8 @@ body {
 }
 
 .chat-window {
+  display: flex;
+  flex-direction: column;
   padding: 20px;
   font-size: 18px;
   line-height: 1.5;
@@ -313,4 +315,45 @@ body {
 
 .remove-x:hover {
   color: #b8002a;
+}
+
+/* Chat bubbles for chatWindow */
+.chat-bubble {
+  max-width: 70%;
+  min-width: 80px;
+  margin: 10px 0;
+  padding: 16px 22px;
+  border-radius: 18px;
+  font-size: 16px;
+  line-height: 1.5;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  word-break: break-word;
+  vertical-align: top;
+  display: block;
+}
+
+/* User bubbles: align right */
+.chat-bubble.user {
+  background: #e3a535;
+  color: #222;
+  align-self: flex-end;
+}
+
+/* Assistant bubbles: align left */
+.chat-bubble.assistant {
+  background: #222;
+  color: #fff;
+  align-self: flex-start;
+  text-align: left;
+}
+
+/* Make markdown lists have extra padding inside bubbles */
+.chat-bubble ul,
+.chat-bubble ol {
+  padding-left: 28px;
+  margin-bottom: 0;
+}
+
+.chat-bubble li {
+  margin-bottom: 8px;
 }
